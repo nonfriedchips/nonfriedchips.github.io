@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>2021523test</title>
+    <url>/2021/05/24/2021523test/</url>
+    <content><![CDATA[
+        <h6 id="杰哥出题又水了小声bb"   >
+          <a href="#杰哥出题又水了小声bb" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#杰哥出题又水了小声bb"></a> <s>杰哥出题又水了（小声bb）</s></h6>
+      
+<span id="more"></span>
+
+        <h2 id="t1-rp"   >
+          <a href="#t1-rp" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#t1-rp"></a> T1 rp</h2>
+      
+<p>第一题是个裸的lca</p>
+<p>有个优化是在下标的二进制表示下，先将大的数位右移至与小数同一位（跳至同一层），然后再将两数同时右移直至相等</p>
+<p><a href="no_submit">submit</a> : no submit</p>
+<p><a href="rp.cpp">code</a></p>
+
+        <h2 id="t2-seg"   >
+          <a href="#t2-seg" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#t2-seg"></a> T2 seg</h2>
+      
+<p>看起来是个线段树，其实是先模拟找出区间，然后等差数列求和公式求解</p>
+<p><a href="no_submit">submit</a> : no submit</p>
+<p><a href="seg.cpp">code</a></p>
+
+        <h2 id="t3-lib"   >
+          <a href="#t3-lib" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#t3-lib"></a> T3 lib</h2>
+      
+<p>裸的权值线段树</p>
+<p>但是考试时手残将freopen的参数写错和将数组开小了4倍gg</p>
+<p><a href="no_submit">submit</a> : no submit</p>
+<p><a href="lib.cpp">code</a></p>
+
+        <h2 id="t4-bag"   >
+          <a href="#t4-bag" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#t4-bag"></a> T4 bag</h2>
+      
+<p>乱搞题</p>
+<p>先按价值排下序，然后从左到右扫一边，用堆维护左边，平衡树维护右边最小的 $ k\div2 $ 个数，可删堆维护右边没选的数，合法就立刻输出</p>
+<p><a href="no_submit">submit</a> : no submit</p>
+<p><a href="bag.cpp">code</a></p>
+
+        <h2 id="end"   >
+          <a href="#end" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#end"></a> end</h2>
+      
+<p>100 + 100 + 0 + 100 = 300</p>
+<p>痛失 $ rank_1 $，爬了…</p>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>线段树</category>
+        <category>堆</category>
+        <category>lca</category>
+      </categories>
+      <tags>
+        <tag>模拟赛</tag>
+        <tag>数据结构</tag>
+        <tag>线段树</tag>
+        <tag>堆</tag>
+        <tag>lca</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>凸包</title>
+    <url>/2021/04/29/%E5%87%B8%E5%8C%85/</url>
+    <content><![CDATA[<p><s>计算几何没用</s></p>
+<span id="more"></span>
+
+        <h3 id="andrew算法"   >
+          <a href="#andrew算法" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#andrew算法"></a> Andrew算法</h3>
+      
+<p>该算法以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 为第一关键字，以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 为第二关键字，将所有点排序后如下</p>
+<p><img   src="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcULXxEMTMaRje*cocnhypBE5f7lcCihew7i695QucQczmyPRKUv86fV67ABTcgRbuyfT1qpIRzSviFDCjfPyG48!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" style=""  alt="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcULXxEMTMaRje*cocnhypBE5f7lcCihew7i695QucQczmyPRKUv86fV67ABTcgRbuyfT1qpIRzSviFDCjfPyG48!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" /></p>
+<p>我们从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">a_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 开始遍历，然后求一个下凸壳，在求凸壳的时候，我们把加入凸壳的点加入到一个栈内，然后比较新的点和栈最上方的两个点构成的线的顺时针逆时针关系，若新的点在外侧，则此三点构成一个凹形，如图</p>
+<p><img   src="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcRlKgl.E8ilpRqQkPOLJI9CJIYSJvem.N2hRAkLw9g9yU4gc4hxVB7wdDdVlgeob3AuhIIMO5x.TqvwWmUHR8E8!/b&amp;bo=wAGqAQAAAAADF1g!&amp;rf=viewer_4&amp;t=5" style=""  alt="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcRlKgl.E8ilpRqQkPOLJI9CJIYSJvem.N2hRAkLw9g9yU4gc4hxVB7wdDdVlgeob3AuhIIMO5x.TqvwWmUHR8E8!/b&amp;bo=wAGqAQAAAAADF1g!&amp;rf=viewer_4&amp;t=5" /></p>
+<p>则我们就将栈顶点pop，使其为凸型</p>
+<p>最终求出下凸壳</p>
+<img   src="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcei2EF79hLAWa4PJgxIndFd2DM5ago78BctN0G19XFaair5gTZGRIojYW5VB.ZdeyI*y6S8dO*GpiwfgnpAWxF0!/b&bo=bQJpAQAAAAADFzU!&rf=viewer_4&t=5" style=""  alt="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcei2EF79hLAWa4PJgxIndFd2DM5ago78BctN0G19XFaair5gTZGRIojYW5VB.ZdeyI*y6S8dO*GpiwfgnpAWxF0!/b&bo=bQJpAQAAAAADFzU!&rf=viewer_4&t=5"  />
+<p><img   src="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcULXxEMTMaRje*cocnhypBF4aQhoEqiisaMgAFYVdF7p.Cvzr58R01dqBNYu91L7Yc*jQA9QW0b9VQ4g1iyjpbM!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" style=""  alt="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcULXxEMTMaRjecocnhypBF4aQhoEqiisaMgAFYVdF7p.Cvzr58R01dqBNYu91L7YcjQA9QW0b9VQ4g1iyjpbM!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" /></p>
+<p><img   src="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcei2EF79hLAWa4PJgxIndFeXbDTixC8h7MLOPyZI4YRCCGP9oobweRF2*pA2H4cqSRQeCVG5S*qyrQv.vRfx7.c!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" style=""  alt="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcei2EF79hLAWa4PJgxIndFeXbDTixC8h7MLOPyZI4YRCCGP9oobweRF2pA2H4cqSRQeCVG5SqyrQv.vRfx7.c!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" /></p>
+<p><img   src="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcei2EF79hLAWa4PJgxIndFdJtIhSXWXkeN**qmgOnet9xrAjNU3nJQjgRkOMJV6Dvb1dNEOxod7yD*sdISof.0Q!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" style=""  alt="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcei2EF79hLAWa4PJgxIndFdJtIhSXWXkeN**qmgOnet9xrAjNU3nJQjgRkOMJV6Dvb1dNEOxod7yD*sdISof.0Q!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" /></p>
+<p><img   src="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcULXxEMTMaRje*cocnhypBFf*KeUEO3PtKBeEb6Y7MqDXCxkCC*G1APtfNiiJK5xWE0Ao2ErmPJ6k3A9bq1QTSo!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" style=""  alt="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcULXxEMTMaRjecocnhypBFfKeUEO3PtKBeEb6Y7MqDXCxkCC*G1APtfNiiJK5xWE0Ao2ErmPJ6k3A9bq1QTSo!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" /></p>
+<p><img   src="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcULXxEMTMaRje*cocnhypBEpBNXKxcEwOTMIpi5eYCCXcr9*6og6R3fx*pgA3wk9Cc6mKdSiQIGYE53wLlK2bDs!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" style=""  alt="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcULXxEMTMaRjecocnhypBEpBNXKxcEwOTMIpi5eYCCXcr96og6R3fx*pgA3wk9Cc6mKdSiQIGYE53wLlK2bDs!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" /></p>
+<p><img   src="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcXjqBbh14iEENRWkRIrEjFsPrN6rzLzQkT9QIgl0Hmvn72DRxJ6e.B*IpKQgDHrYNSAjmOoVM9.HNvV0nqRW8Ew!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" style=""  alt="http://m.qpic.cn/psc?/V51l3kV52OeuZx2q5Wv23wwYv81S4xlU/45NBuzDIW489QBoVep5mcXjqBbh14iEENRWkRIrEjFsPrN6rzLzQkT9QIgl0Hmvn72DRxJ6e.B*IpKQgDHrYNSAjmOoVM9.HNvV0nqRW8Ew!/b&amp;bo=bQJpAQAAAAADFzU!&amp;rf=viewer_4&amp;t=5" /></p>
+<p>然后再从 $ a_n $ 开始遍历至点1，求出上凸壳</p>
+<p>本题就完成了</p>
+<figure class="highlight cpp"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-8</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">vec</span>&#123;</span></span><br><span class="line">	<span class="keyword">double</span> x, y;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> vec &amp; other)<span class="keyword">const</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> y == other.y ? x &lt; other.x : y &lt; other.y;</span><br><span class="line">	&#125;</span><br><span class="line">	vec <span class="keyword">operator</span> - (<span class="keyword">const</span> vec &amp; other)<span class="keyword">const</span>&#123;</span><br><span class="line">		vec res;</span><br><span class="line">		res.x = x - other.x;</span><br><span class="line">		res.y = y - other.y;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;a[N];</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">cross</span><span class="params">(vec A, vec B)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> A.x * B.y - B.x * A.y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isleft</span><span class="params">(vec A, vec B)</span></span>&#123;<span class="comment">//叉积为正，逆时针，叉积为负，顺时针</span></span><br><span class="line">	<span class="keyword">return</span> A.x * B.y + eps &gt; B.x * A.y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">dis</span><span class="params">(vec A, vec B)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">sqrt</span>(<span class="built_in">pow</span>(A.x - B.x, <span class="number">2</span>) + <span class="built_in">pow</span>(A.y - B.y, <span class="number">2</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> stk[N], top, tmp;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%lf%lf&quot;</span>, &amp;a[i].x, &amp;a[i].y);</span><br><span class="line">	<span class="built_in">sort</span>(a+<span class="number">1</span>, a+n+<span class="number">1</span>);</span><br><span class="line">	stk[++top] = <span class="number">1</span>;</span><br><span class="line">	stk[++top] = <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(top &gt; <span class="number">1</span> &amp;&amp; <span class="built_in">isleft</span>(a[stk[top]] - a[stk[top<span class="number">-1</span>]], a[i] - a[stk[top<span class="number">-1</span>]]))<span class="comment">//这里用while</span></span><br><span class="line">			top--;<span class="comment">//因为一个新点的加入可能引起前面许多点的弹出</span></span><br><span class="line">		stk[++top] = i;</span><br><span class="line">	&#125;</span><br><span class="line">	tmp = top;</span><br><span class="line">	<span class="comment">// stk[++top] = n-1;</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-1</span>; i; i--)&#123;</span><br><span class="line">		<span class="keyword">while</span>(top &gt; tmp &amp;&amp; <span class="built_in">isleft</span>(a[stk[top]] - a[stk[top<span class="number">-1</span>]], a[i] - a[stk[top<span class="number">-1</span>]]))</span><br><span class="line">			top--;</span><br><span class="line">		stk[++top] = i;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h3 id="graham算法"   >
+          <a href="#graham算法" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#graham算法"></a> Graham算法</h3>
+      
+<p>我懒了，<s>再也不</s>  以后补上。</p>
+]]></content>
+      <categories>
+        <category>计算几何</category>
+      </categories>
+      <tags>
+        <tag>计算几何</tag>
+        <tag>练习</tag>
+      </tags>
+  </entry>
+</search>

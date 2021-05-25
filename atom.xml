@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Chips的Blog</title>
+  
+  
+  <link href="https://nonfriedchips.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://nonfriedchips.github.io/"/>
+  <updated>2021-05-24T13:46:13.078Z</updated>
+  <id>https://nonfriedchips.github.io/</id>
+  
+  <author>
+    <name>non_fried_chips</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2021523test</title>
+    <link href="https://nonfriedchips.github.io/2021/05/24/2021523test/"/>
+    <id>https://nonfriedchips.github.io/2021/05/24/2021523test/</id>
+    <published>2021-05-24T13:15:06.000Z</published>
+    <updated>2021-05-24T13:46:13.078Z</updated>
+    
+    
+    <summary type="html">&lt;h6 id=&quot;杰哥出题又水了小声bb&quot;   &gt;
+          &lt;a href=&quot;#杰哥出题又水了小声bb&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#杰哥出题又水了小声bb&quot;&gt;&lt;/a&gt; &lt;s&gt;杰哥出题又水了（小声bb）&lt;/s&gt;&lt;/h6&gt;</summary>
+    
+    
+    
+    <category term="数据结构" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="线段树" scheme="https://nonfriedchips.github.io/categories/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+    
+    <category term="堆" scheme="https://nonfriedchips.github.io/categories/%E7%BA%BF%E6%AE%B5%E6%A0%91/%E5%A0%86/"/>
+    
+    <category term="lca" scheme="https://nonfriedchips.github.io/categories/%E7%BA%BF%E6%AE%B5%E6%A0%91/%E5%A0%86/lca/"/>
+    
+    
+    <category term="模拟赛" scheme="https://nonfriedchips.github.io/tags/%E6%A8%A1%E6%8B%9F%E8%B5%9B/"/>
+    
+    <category term="数据结构" scheme="https://nonfriedchips.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="线段树" scheme="https://nonfriedchips.github.io/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+    
+    <category term="堆" scheme="https://nonfriedchips.github.io/tags/%E5%A0%86/"/>
+    
+    <category term="lca" scheme="https://nonfriedchips.github.io/tags/lca/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>凸包</title>
+    <link href="https://nonfriedchips.github.io/2021/04/29/%E5%87%B8%E5%8C%85/"/>
+    <id>https://nonfriedchips.github.io/2021/04/29/%E5%87%B8%E5%8C%85/</id>
+    <published>2021-04-29T02:15:48.000Z</published>
+    <updated>2021-04-29T07:16:09.413Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;s&gt;计算几何没用&lt;/s&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="计算几何" scheme="https://nonfriedchips.github.io/categories/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/"/>
+    
+    
+    <category term="计算几何" scheme="https://nonfriedchips.github.io/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/"/>
+    
+    <category term="练习" scheme="https://nonfriedchips.github.io/tags/%E7%BB%83%E4%B9%A0/"/>
+    
+  </entry>
+  
+</feed>
