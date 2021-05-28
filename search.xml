@@ -44,8 +44,8 @@
         <category>练习</category>
       </categories>
       <tags>
-        <tag>练习</tag>
         <tag>数据结构</tag>
+        <tag>练习</tag>
         <tag>平衡树</tag>
         <tag>Splay</tag>
       </tags>
@@ -104,8 +104,8 @@
         <category>lca</category>
       </categories>
       <tags>
-        <tag>数据结构</tag>
         <tag>模拟赛</tag>
+        <tag>数据结构</tag>
         <tag>线段树</tag>
         <tag>堆</tag>
         <tag>lca</tag>
