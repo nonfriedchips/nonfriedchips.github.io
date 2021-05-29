@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>主席树</title>
+    <url>/2021/05/29/%E4%B8%BB%E5%B8%AD%E6%A0%91/</url>
+    <content><![CDATA[
+        <h2 id="前言"   >
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
+      
+<p>画个饼,以后来补</p>
+<span id="more"></span>
+
+        <h2 id="code"   >
+          <a href="#code" class="heading-link"><i class="fas fa-link"></i></a><a class="markdownIt-Anchor" href="#code"></a> <a href="%E4%B8%BB%E5%B8%AD%E6%A0%91.cpp">code</a></h2>
+      
+<figure class="highlight cpp"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> std::cin;</span><br><span class="line"><span class="keyword">using</span> std::cout;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> a[N], mp[N], len;</span><br><span class="line"><span class="keyword">int</span> st[N*<span class="number">20</span>], l[N*<span class="number">20</span>], r[N*<span class="number">20</span>], root[N], num;</span><br><span class="line"><span class="keyword">int</span> x, y, z;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> s, <span class="keyword">int</span> t, <span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u = ++num;</span><br><span class="line">    l[u] = l[p];</span><br><span class="line">    r[u] = r[p];</span><br><span class="line">    st[u] = st[p] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid = s + t &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(s &lt; t)&#123;</span><br><span class="line">        <span class="keyword">if</span>(mid &gt;= a) l[num] = <span class="built_in">change</span>(a, s, mid, l[p]);</span><br><span class="line">        <span class="keyword">else</span> r[num] = <span class="built_in">change</span>(a, mid+<span class="number">1</span>, t, r[p]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> opt, <span class="keyword">int</span> s, <span class="keyword">int</span> t, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(s == t)</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    <span class="keyword">int</span> mid = s + t &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(st[l[b]] - st[l[a]] &gt;= opt) <span class="keyword">return</span> <span class="built_in">query</span>(opt, s, mid, l[a], l[b]);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">query</span>(opt-(st[l[b]] - st[l[a]]), mid+<span class="number">1</span>, t, r[a], r[b]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    std::ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="literal">NULL</span>);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        cin &gt;&gt; a[i]; mp[i] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    std::<span class="built_in">sort</span>(mp+<span class="number">1</span>, mp+n+<span class="number">1</span>);</span><br><span class="line">    len = std::<span class="built_in">unique</span>(mp+<span class="number">1</span>, mp+n+<span class="number">1</span>) - mp - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">        root[i] = <span class="built_in">change</span>(std::<span class="built_in">lower_bound</span>(mp+<span class="number">1</span>, mp+len+<span class="number">1</span>, a[i]) - mp, <span class="number">1</span>, n, root[i<span class="number">-1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">        cin &gt;&gt; x &gt;&gt; y &gt;&gt; z;</span><br><span class="line">        cout &lt;&lt; mp[<span class="built_in">query</span>(z, <span class="number">1</span>, n, root[x<span class="number">-1</span>], root[y])] &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout.<span class="built_in">flush</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+]]></content>
+      <categories>
+        <category>数据结构</category>
+        <category>线段树</category>
+        <category>练习</category>
+        <category>模板</category>
+        <category>权值线段树</category>
+        <category>主席树</category>
+        <category>可持久化数据结构</category>
+        <category>主席树</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+        <tag>线段树</tag>
+        <tag>练习</tag>
+        <tag>模板</tag>
+        <tag>权值线段树</tag>
+        <tag>可持久化数据结构</tag>
+        <tag>主席树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Qread</title>
     <url>/2021/05/29/Qread/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
@@ -64,12 +99,14 @@
         <category>平衡树</category>
         <category>Splay</category>
         <category>练习</category>
+        <category>模板</category>
       </categories>
       <tags>
         <tag>数据结构</tag>
         <tag>练习</tag>
         <tag>平衡树</tag>
         <tag>Splay</tag>
+        <tag>模板</tag>
       </tags>
   </entry>
   <entry>
@@ -124,6 +161,8 @@
         <category>堆</category>
         <category>图论</category>
         <category>lca</category>
+        <category>权值线段树</category>
+        <category>模拟赛</category>
       </categories>
       <tags>
         <tag>模拟赛</tag>
@@ -131,6 +170,7 @@
         <tag>线段树</tag>
         <tag>堆</tag>
         <tag>lca</tag>
+        <tag>权值线段树</tag>
       </tags>
   </entry>
   <entry>
@@ -176,10 +216,14 @@
 ]]></content>
       <categories>
         <category>计算几何</category>
+        <category>练习</category>
+        <category>模板</category>
+        <category>凸包</category>
       </categories>
       <tags>
         <tag>练习</tag>
         <tag>计算几何</tag>
+        <tag>模板</tag>
       </tags>
   </entry>
 </search>
