@@ -6,7 +6,7 @@
   <link href="https://nonfriedchips.github.io/atom.xml" rel="self"/>
   
   <link href="https://nonfriedchips.github.io/"/>
-  <updated>2021-05-29T13:08:22.938Z</updated>
+  <updated>2021-06-01T08:24:24.771Z</updated>
   <id>https://nonfriedchips.github.io/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>莫队全家桶</title>
+    <link href="https://nonfriedchips.github.io/2021/06/01/%E8%8E%AB%E9%98%9F%E5%85%A8%E5%AE%B6%E6%A1%B6/"/>
+    <id>https://nonfriedchips.github.io/2021/06/01/%E8%8E%AB%E9%98%9F%E5%85%A8%E5%AE%B6%E6%A1%B6/</id>
+    <published>2021-06-01T08:11:34.000Z</published>
+    <updated>2021-06-01T08:24:24.771Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;本文内容均来自-colorblacklcolorredawrencesivan&quot;   &gt;
+          &lt;a href=&quot;#本文内容均来自-colorblacklcolorredawrencesivan&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#本文内容均来自-colorblacklcolorredawrencesivan&quot;&gt;&lt;/a&gt; 本文内容均来自 &lt;a href=&quot;https://www.cnblogs.com/LawrenceSivan/&quot;&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mstyle mathcolor=&quot;black&quot;&gt;&lt;mi&gt;L&lt;/mi&gt;&lt;/mstyle&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;\color{black}{L}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot; style=&quot;color:black;&quot;&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;color:black;&quot;&gt;L&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;a href=&quot;https://lawrencesivan.github.io/&quot;&gt;&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mstyle mathcolor=&quot;red&quot;&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;w&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mi&gt;e&lt;/mi&gt;&lt;mi&gt;S&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;v&lt;/mi&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;/mstyle&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;\color{red}{awrenceSivan}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.68333em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot; style=&quot;color:red;&quot;&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;color:red;&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.02691em;color:red;&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.02778em;color:red;&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;color:red;&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;color:red;&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;color:red;&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;color:red;&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.05764em;color:red;&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;color:red;&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;margin-right:0.03588em;color:red;&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;color:red;&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot; style=&quot;color:red;&quot;&gt;n&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;</summary>
+    
+    
+    
+    <category term="数据结构" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="模板" scheme="https://nonfriedchips.github.io/categories/%E6%A8%A1%E6%9D%BF/"/>
+    
+    <category term="莫队" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E8%8E%AB%E9%98%9F/"/>
+    
+    <category term="树上莫队" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E8%8E%AB%E9%98%9F/%E6%A0%91%E4%B8%8A%E8%8E%AB%E9%98%9F/"/>
+    
+    <category term="带修莫队" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E8%8E%AB%E9%98%9F/%E5%B8%A6%E4%BF%AE%E8%8E%AB%E9%98%9F/"/>
+    
+    <category term="回滚莫队" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E8%8E%AB%E9%98%9F/%E5%9B%9E%E6%BB%9A%E8%8E%AB%E9%98%9F/"/>
+    
+    
+    <category term="数据结构" scheme="https://nonfriedchips.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="模板" scheme="https://nonfriedchips.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+    <category term="莫队" scheme="https://nonfriedchips.github.io/tags/%E8%8E%AB%E9%98%9F/"/>
+    
+    <category term="树上莫队" scheme="https://nonfriedchips.github.io/tags/%E6%A0%91%E4%B8%8A%E8%8E%AB%E9%98%9F/"/>
+    
+    <category term="带修莫队" scheme="https://nonfriedchips.github.io/tags/%E5%B8%A6%E4%BF%AE%E8%8E%AB%E9%98%9F/"/>
+    
+    <category term="回滚莫队" scheme="https://nonfriedchips.github.io/tags/%E5%9B%9E%E6%BB%9A%E8%8E%AB%E9%98%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>主席树</title>
