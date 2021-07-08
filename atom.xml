@@ -94,9 +94,9 @@
     
     <category term="权值线段树" scheme="https://nonfriedchips.github.io/tags/%E6%9D%83%E5%80%BC%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
-    <category term="练习" scheme="https://nonfriedchips.github.io/tags/%E7%BB%83%E4%B9%A0/"/>
-    
     <category term="模板" scheme="https://nonfriedchips.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+    <category term="练习" scheme="https://nonfriedchips.github.io/tags/%E7%BB%83%E4%B9%A0/"/>
     
     <category term="可持久化数据结构" scheme="https://nonfriedchips.github.io/tags/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -148,13 +148,13 @@
     
     <category term="数据结构" scheme="https://nonfriedchips.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
+    <category term="模板" scheme="https://nonfriedchips.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
     <category term="练习" scheme="https://nonfriedchips.github.io/tags/%E7%BB%83%E4%B9%A0/"/>
     
     <category term="平衡树" scheme="https://nonfriedchips.github.io/tags/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
     
     <category term="Splay" scheme="https://nonfriedchips.github.io/tags/Splay/"/>
-    
-    <category term="模板" scheme="https://nonfriedchips.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
     
   </entry>
   
@@ -221,9 +221,9 @@
     <category term="凸包" scheme="https://nonfriedchips.github.io/categories/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/%E5%87%B8%E5%8C%85/"/>
     
     
-    <category term="练习" scheme="https://nonfriedchips.github.io/tags/%E7%BB%83%E4%B9%A0/"/>
-    
     <category term="模板" scheme="https://nonfriedchips.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+    <category term="练习" scheme="https://nonfriedchips.github.io/tags/%E7%BB%83%E4%B9%A0/"/>
     
     <category term="计算几何" scheme="https://nonfriedchips.github.io/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/"/>
     
