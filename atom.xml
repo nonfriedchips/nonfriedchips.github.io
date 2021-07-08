@@ -6,7 +6,7 @@
   <link href="https://nonfriedchips.github.io/atom.xml" rel="self"/>
   
   <link href="https://nonfriedchips.github.io/"/>
-  <updated>2021-06-01T08:24:24.771Z</updated>
+  <updated>2021-07-08T13:34:15.555Z</updated>
   <id>https://nonfriedchips.github.io/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BSGS</title>
+    <link href="https://nonfriedchips.github.io/2021/07/08/BSGS/"/>
+    <id>https://nonfriedchips.github.io/2021/07/08/BSGS/</id>
+    <published>2021-07-08T12:28:06.000Z</published>
+    <updated>2021-07-08T13:34:15.555Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;bsgs&quot;   &gt;
+          &lt;a href=&quot;#bsgs&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#bsgs&quot;&gt;&lt;/a&gt; BSGS&lt;/h2&gt;
+      
+&lt;p&gt;&lt;s&gt;北上广深算法&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;我们有时会遇到这样的方程&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;/msup&gt;&lt;mo&gt;≡&lt;/mo&gt;&lt;mrow&gt;&lt;/mrow&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;d&lt;/mi&gt;&lt;mtext&gt; &lt;/mtext&gt;&lt;mi&gt;p&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;x^y\equiv{}(mod\ p)&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.664392em;vertical-align:0em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.664392em;&quot;&gt;&lt;span style=&quot;top:-3.063em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mathdefault mtight&quot; style=&quot;margin-right:0.03588em;&quot;&gt;y&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;≡&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2777777777777778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1em;vertical-align:-0.25em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;mspace&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mord mathdefault&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，面对这样的方程，我们…&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="搜索" scheme="https://nonfriedchips.github.io/categories/%E6%90%9C%E7%B4%A2/"/>
+    
+    <category term="折半搜索" scheme="https://nonfriedchips.github.io/categories/%E6%90%9C%E7%B4%A2/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/"/>
+    
+    <category term="同余方程" scheme="https://nonfriedchips.github.io/categories/%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/"/>
+    
+    <category term="高次同余方程" scheme="https://nonfriedchips.github.io/categories/%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/%E9%AB%98%E6%AC%A1%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/"/>
+    
+    <category term="BSGS" scheme="https://nonfriedchips.github.io/categories/%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/%E9%AB%98%E6%AC%A1%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/BSGS/"/>
+    
+    
+    <category term="搜索" scheme="https://nonfriedchips.github.io/tags/%E6%90%9C%E7%B4%A2/"/>
+    
+    <category term="折半搜索" scheme="https://nonfriedchips.github.io/tags/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/"/>
+    
+    <category term="同余方程" scheme="https://nonfriedchips.github.io/tags/%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/"/>
+    
+    <category term="高次同余方程" scheme="https://nonfriedchips.github.io/tags/%E9%AB%98%E6%AC%A1%E5%90%8C%E4%BD%99%E6%96%B9%E7%A8%8B/"/>
+    
+    <category term="BSGS" scheme="https://nonfriedchips.github.io/tags/BSGS/"/>
+    
+  </entry>
   
   <entry>
     <title>莫队全家桶</title>
