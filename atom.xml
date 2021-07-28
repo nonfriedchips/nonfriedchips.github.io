@@ -112,13 +112,13 @@
     
     <category term="数据结构" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-    <category term="线段树" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
-    
     <category term="模板" scheme="https://nonfriedchips.github.io/categories/%E6%A8%A1%E6%9D%BF/"/>
     
-    <category term="权值线段树" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/%E6%9D%83%E5%80%BC%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+    <category term="线段树" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
     <category term="练习" scheme="https://nonfriedchips.github.io/categories/%E7%BB%83%E4%B9%A0/"/>
+    
+    <category term="权值线段树" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/%E6%9D%83%E5%80%BC%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
     <category term="主席树" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/%E6%9D%83%E5%80%BC%E7%BA%BF%E6%AE%B5%E6%A0%91/%E4%B8%BB%E5%B8%AD%E6%A0%91/"/>
     
@@ -148,10 +148,19 @@
     <link href="https://nonfriedchips.github.io/2021/05/29/Qread/"/>
     <id>https://nonfriedchips.github.io/2021/05/29/Qread/</id>
     <published>2021-05-29T08:49:02.000Z</published>
-    <updated>2021-05-29T08:59:05.229Z</updated>
+    <updated>2021-07-28T06:42:04.024Z</updated>
     
     
-    <summary type="html">该篇博客被加密了, 请联系Chips获取密码.</summary>
+      
+      
+        
+        
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+        &lt;h2 id=&quot;代码来自renamoe&quot;   &gt;
+          &lt;a href=&quot;#代码来自renamoe&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas</summary>
+        
+      
     
     
     
@@ -176,13 +185,13 @@
     
     <category term="数据结构" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-    <category term="平衡树" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
-    
     <category term="模板" scheme="https://nonfriedchips.github.io/categories/%E6%A8%A1%E6%9D%BF/"/>
     
-    <category term="Splay" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B3%E8%A1%A1%E6%A0%91/Splay/"/>
+    <category term="平衡树" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B3%E8%A1%A1%E6%A0%91/"/>
     
     <category term="练习" scheme="https://nonfriedchips.github.io/categories/%E7%BB%83%E4%B9%A0/"/>
+    
+    <category term="Splay" scheme="https://nonfriedchips.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B3%E8%A1%A1%E6%A0%91/Splay/"/>
     
     
     <category term="数据结构" scheme="https://nonfriedchips.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
