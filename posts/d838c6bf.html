@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 8.1.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.kawaiii.wiki","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="BUAA OO Unit3 之 JML 的自动评测方法以及一些字符串匹配算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUAA OO Unit3 JML的自动化评测与字符串匹配算法">
+<meta property="og:url" content="http://blog.kawaiii.wiki/posts/d838c6bf.html">
+<meta property="og:site_name" content="Wiki&#39;s Blog">
+<meta property="og:description" content="BUAA OO Unit3 之 JML 的自动评测方法以及一些字符串匹配算法">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.kawaiii.wiki/assets/image-20260524000445667.png">
+<meta property="og:image" content="http://blog.kawaiii.wiki/assets/image-20260524002343204.png">
+<meta property="og:image" content="http://blog.kawaiii.wiki/assets/images.jpeg">
+<meta property="article:published_time" content="2026-05-23T15:47:10.000Z">
+<meta property="article:modified_time" content="2026-05-24T06:25:46.453Z">
+<meta property="article:author" content="NonFriedChips">
+<meta property="article:tag" content="BUAA">
+<meta property="article:tag" content="Course">
+<meta property="article:tag" content="OO">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.kawaiii.wiki/assets/image-20260524000445667.png">
+
+<link rel="canonical" href="http://blog.kawaiii.wiki/posts/d838c6bf.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>BUAA OO Unit3 JML的自动化评测与字符串匹配算法 | Wiki's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Wiki's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://blog.kawaiii.wiki/posts/d838c6bf.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="NonFriedChips">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wiki's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BUAA OO Unit3 JML的自动化评测与字符串匹配算法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2026-05-23 23:47:10" itemprop="dateCreated datePublished" datetime="2026-05-23T23:47:10+08:00">2026-05-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-05-24 14:25:46" itemprop="dateModified" datetime="2026-05-24T14:25:46+08:00">2026-05-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Course-OO/" itemprop="url" rel="index"><span itemprop="name">Course - OO</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="BUAA-OO-Unit3-心得"><a href="#BUAA-OO-Unit3-心得" class="headerlink" title="BUAA OO Unit3 心得"></a>BUAA OO Unit3 心得</h2><h3 id="JML-的自动化评测"><a href="#JML-的自动化评测" class="headerlink" title="JML 的自动化评测"></a>JML 的自动化评测</h3><p>JML 如此<del>反人类</del>面向机器的设计怎么能没有自动化评测方法呢，显然 JML 并不只是给 AI 看的语言（，接下来我们将介绍一些 JML 的自动评测方法</p>
+<h4 id="动态测试"><a href="#动态测试" class="headerlink" title="动态测试"></a>动态测试</h4><ol>
+<li><p>使用 OpenJML 编译器将带有 JML 注释的源码编译为带有运行时检查 (RAC) 的 <code>.class</code> 文件</p>
+</li>
+<li><p>自动化生成测试数据（利用随机数据、边界值数据，或利用 <code>JMLUnitNG</code>&#x2F;<code>Randoop</code> 自动生成）</p>
+</li>
+<li><p>运行测试用例。如果程序崩溃或抛出 JML 异常，则说明代码实现（或 JML 编写）存在问题</p>
+</li>
+</ol>
+<h4 id="静态测试"><a href="#静态测试" class="headerlink" title="静态测试"></a>静态测试</h4><p>将 JML 规格和 Java 代码翻译成逻辑表达式（中间语言如 Boogie&#x2F;Why3），然后用 SMT 求解器（如 Z3-Solver）证明代码是否符合规格</p>
+<ul>
+<li>OpenJML (ESC&#x2F;Stack Check) + Z3-Solver</li>
+</ul>
+<h4 id="测试流程"><a href="#测试流程" class="headerlink" title="测试流程"></a>测试流程</h4><ol>
+<li><p>下载 OpenJML 和对应的 Solvers</p>
+</li>
+<li><p>自动化静态检查</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar openjml.jar -esc -prover z3 MyClass.java</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译运行时断言</p>
+<p>静态检查有时因为算力或 JML 语法过于复杂而产生 <code>Unknown</code> 或超时。因此，最稳妥的自动化评测还是依赖动态测试。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译带 JML 运行时检查的字节码，输出到 rac_bin 目录</span></span><br><span class="line">java -jar openjml.jar -rac -d bin_rac src/MyClass.java src/MyInterface.java</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成数据并测试</p>
+<ul>
+<li><p>使用 JMLUnitNG 生成 TestNG</p>
+</li>
+<li><p>编写一个测试桩（Test Runner），结合参数化测试（Parameterized Tests），构造边界值。</p>
+<ul>
+<li>正常输入：验证后置条件（<code>ensures</code>）和不变性（<code>invariant</code>）。</li>
+<li>异常输入：故意输入违反前置条件（<code>requires</code>）的数据。如果代码抛出了 <code>JMLRequiresError</code>，说明前置拦截正确；如果没有抛出而往下执行了，说明代码健壮性有漏洞。</li>
+</ul>
+</li>
+<li><p>随机生成大规模的指令&#x2F;数据流。</p>
+<p>将数据喂给待测代码（编译了 RAC） 和 标程（或者是其他人的代码）。</p>
+<p>检查待测代码是否抛出了 <code>JMLAssertionError</code>，并对比最终的输出结果。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="一些工具介绍"><a href="#一些工具介绍" class="headerlink" title="一些工具介绍"></a>一些工具介绍</h4><p>OpenJML (RAC)</p>
+<p>OpenJML (ESC)</p>
+<p>JMLUnitNG</p>
+<p>JMLCUTE</p>
+<p>Randoop&#x2F;EvoSuite</p>
+<h4 id="AI-神力"><a href="#AI-神力" class="headerlink" title="AI 神力"></a>AI 神力</h4><p>我们可以让 AI 来检查</p>
+<h3 id="字符串匹配算法"><a href="#字符串匹配算法" class="headerlink" title="字符串匹配算法"></a>字符串匹配算法</h3><p>在 <code>hw10</code> 中出现了令人啼笑皆非的场景</p>
+<p>由于文本串和模式串都极短，很难区分 KMP 和 Brute Force 两种算法，因此聪明的你想到了猛猛加数据压测来区分这两种算法</p>
+<p>在对代码进行高强度压力测试中，由于服务器已经变成了<br><img src="/./assets/image-20260524000445667.png" alt="MC Baked Potato"></p>
+<p>于是服务器决定随机通过所有采取 KMP 和 Brute Force 的代码 ( 作者就是不幸被随机判定为不通过的那位 )</p>
+<p>我们来分析一下这个有趣的现象，并从这个现象来理解不同的字符串匹配算法以及他们的优劣之处</p>
+<h4 id="为何两者的用时差不多"><a href="#为何两者的用时差不多" class="headerlink" title="为何两者的用时差不多"></a>为何两者的用时差不多</h4><p>在算法竞赛中，我们通常使用时间复杂度来区分算法性能的优劣，这是因为在算法竞赛的数据规模下，不同时间复杂度算法的用时会有很显然的区分。（而且选手写了访存不友好的算法日不过去就会痛骂出题人卡常）</p>
+<p>不过聪明的小朋友早在大一冲榜数据结构这门课的大作业时就发现</p>
+<p>《我引以为傲的哈希算法被写 Trie 树的名门正派说是轮椅，时间还碾了 Trie 树两条街》</p>
+<p>这是因为裸的 Trie 树在当时的场景会对不连续的内存进行大量随机访问，而哈希算法访问内存几乎是连续的。</p>
+<p>现在大家也已经完全了解了，访存性能对于一个程序影响会很大 (这就是为什么我不在这个字符串匹配中写 SAM <del>绝对不是我觉得不好写</del>) </p>
+<hr>
+<p>现在我们令目光回到暴力身上，来看为什么他这么快，实际上 <code>String.contains()</code> 这个函数相当高效</p>
+<p>他在比较的时候使用了 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E5%8D%95%E6%8C%87%E4%BB%A4%E6%B5%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%B5%81">SIMD 技术</a>，CPU一次将复数字节的数据加载到向量寄存器中，一个 CPU 时钟周期内完成整块数据的对比（并且对于这些批量操作的数据，可以更加方便进行多发射。（待验证））（我们后续将介绍一个类似的算法）</p>
+<p><img src="/./assets/image-20260524002343204.png" alt="SIMD 维基百科"></p>
+<p>故而在模式串极短的情况下，CPU只需一个指令就能完成批量的比较</p>
+<p>而 KMP 访存不友好，需要预处理，预测不友好，成为了牢九门（</p>
+<hr>
+<p>接下来我们将一次介绍多种字符串匹配算法</p>
+<p>我们先补充基础知识</p>
+<p>在字符串匹配中，需要寻找的字符串叫模式串，即该作业中的 spam 关键字，而待判断的串叫文本串</p>
+<p>如：”在串’abc_wiki_abc’ 寻找 ‘wiki’，其中 ‘wiki’ 出现了 1 次”，上面这个匹配操作中，”abc_wiki_abc” 就是文本串，”wiki” 就是模式串</p>
+<h4 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h4><p>这个大家貌似已经学过了，其算法本质是，先前的匹配中蕴含了一些信息，故在错配时，我们不应该全部清空，而是充分利用前后缀相同的部分，于是我们预处理出失配指针，在模式串上建立自动机进行匹配</p>
+<p>可以发现这个算法能够将模式串上的信息压缩到极限，不难猜出 KMP 算法适合进行长模式串的匹配</p>
+<p>该算法复杂度为 O(N+M)，在渐进时间复杂度意义上达到字符串匹配理论复杂度极限。</p>
+<h4 id="BM-长文本串-长模式串-随机字符"><a href="#BM-长文本串-长模式串-随机字符" class="headerlink" title="BM (长文本串 长模式串 随机字符)"></a>BM (长文本串 长模式串 随机字符)</h4><p>BM 算法 ( Boyer-Moore 算法 ) 是众多编辑器常用的匹配算法。</p>
+<p>他的核心思想是：从右向左比较，大幅度向后跳跃</p>
+<p>普通的暴力匹配时把模式串在文本串上一步一步往后挪。而 BM 算法在发现不匹配时，能根据已经掌握的信息，一次性向后滑动好几个字符，直接跳过那些绝对不可能匹配成功的区域。</p>
+<p>它之所以能实现大步跳跃，全靠两个核心规则：坏字符规则和好后缀规则。</p>
+<p><img src="/./assets/images.jpeg" alt="坏字符规则"></p>
+<h5 id="坏字符规则"><a href="#坏字符规则" class="headerlink" title="坏字符规则"></a>坏字符规则</h5><p>当模式串和文本串从右向左逐个字符比较时，一旦发现某个字符不匹配，主串中这个不匹配的字符就叫做”坏字符“。</p>
+<p>这个时候怎么跳？看图中的逻辑：</p>
+<ol>
+<li>在文本串的第 11 位发现了坏字符 <code>C</code>，而此时模式串对应的位置是 <code>A</code> ( 不匹配 )</li>
+<li>我们去模式串中，寻找最后一次出现 <code>C</code> 的位置 ( 图里是在第 7 位 )</li>
+<li>我们把模式串向后滑动，让这两个 <code>C</code> 对齐，继续下一次比较</li>
+</ol>
+<h5 id="好字符规则"><a href="#好字符规则" class="headerlink" title="好字符规则"></a>好字符规则</h5><p>如果从右向左匹配的时候，已经连续对上了好几个字符，突然卡住了，那些已经对上的字符，就叫做”好后缀“</p>
+<p>这个时候的滑动策略是：</p>
+<ul>
+<li>在模式串中，看前面还有没有别的地方也包含这个”好后缀“。如果有，就把前面的”好后缀“滑动到与文本串对齐。</li>
+<li>如果前面没有完全一样的”好后缀“，就找模式串的前缀能不能和好后缀的后半部分重合。</li>
+<li>如果仍然没有，就直接把整个模式串滑过这段好后缀</li>
+</ul>
+<p>最终在两个规则中选择跨度最大的那一个。</p>
+<p>时间复杂度 最好 $O(n&#x2F;m)$ 最坏 $O(n\times m)$ 在大字符集中，能快速跳过，效率极高</p>
+<h5 id="BM算法的一些变体"><a href="#BM算法的一些变体" class="headerlink" title="BM算法的一些变体"></a>BM算法的一些变体</h5><ul>
+<li>Boyer-Moore-Horspool 砍掉好后缀规则，只保留坏字符规则。但计算滑动时，永远固定看当前匹配窗口的最后一个字符。大幅简化了代码和内存消耗。因为实际大字符集中好后缀触发概率低，Horspool 在工业界比原版 BM 更常用。</li>
+<li>Turbo-BM 引入记忆化机制。记录上一轮已经匹配成功的子串，下一轮挪动后直接跳过该区域不作比对。彻底解决了原版 BM 的漏洞。将最坏时间复杂度死死锁在 $O(n)$，同时保持了最好情况的亚线性速度。</li>
+<li>Real-Time BM 限制了每一步查找和跳转的最大时间边界，防止在遇到特定周期性字符时发生局部卡顿。专为实时操作系统、硬件防火墙设计，确保搜索的“确定性阻抗”。</li>
+<li>BNDM Backward Non-deterministic Dawg Matching，型向非确定性有限状态自动机匹配</li>
+<li>Sunday 匹配时可以从左往右，但跳转时，只看主串中“当前参与匹配的这一段”的【再后一个字符】</li>
+<li>Sunday-KMP 在Sunday的基础上结合KMP</li>
+</ul>
+<h4 id="Bitap-短模式串-小字符集"><a href="#Bitap-短模式串-小字符集" class="headerlink" title="Bitap ( 短模式串 小字符集 )"></a>Bitap ( 短模式串 小字符集 )</h4><p>此处应有 凌波微步.ppt</p>
+<blockquote>
+<p>Btiap算法和你</p>
+<p>文本搜索的实用方法</p>
+<hr>
+<p>无法在规定时间内完成搜索？</p>
+<ul>
+<li>事实：搜索很麻烦</li>
+<li>哇哦。数据规模很大！</li>
+<li>他还是独特构造的</li>
+<li>而 <strong>服务器</strong> 不加速</li>
+<li>她最坏了</li>
+</ul>
+<p>不可能完成的任务？？？</p>
+<hr>
+<p>介绍…Bitap算法！！</p>
+<p>Bitap算法可以让您在短模式串中进行快速匹配！</p>
+<hr>
+<p>操作方法</p>
+<ul>
+<li>将模式串生成为掩码</li>
+<li>进行位运算状态转移</li>
+<li>结束检查</li>
+<li>成功了！</li>
+<li>（走你）</li>
+</ul>
+<hr>
+<p>匹配中的麻烦？</p>
+<p>如果字符集过大或模式串过长，那么匹配速度将大打折扣。</p>
+</blockquote>
+<p>在 Bitap 中，我们用一个二进制数来表示模式串的字符。</p>
+<p>算法维护一个状态值，用它的二进制位来记录当前匹配到了模式串的第几个字符。</p>
+<p>每读入主串的一个新字符，就通过右移和一次按位或来更新状态。</p>
+<p>这种将状态压缩进二进制的做法，让它能直接享受现代 CPU 在硬件级别对位运算的超高性能优化。</p>
+<p>实现：</p>
+<p>假如我们要寻找模式串 <code>&quot;cat&quot;</code></p>
+<ol>
+<li><p>预处理（生成字符掩码表）：为字符集里的每个字符生成一个长度为 3 的二进制数。在它出现的位置放 <code>0</code>，其余地方放 <code>1</code>。</p>
+<ul>
+<li><p><code>C</code> 出现第 1 位 $\rightarrow$ <code>110</code></p>
+</li>
+<li><p><code>A</code> 出现第 2 位 $\rightarrow$ <code>101</code></p>
+</li>
+<li><p><code>T</code> 出现第 3 位 $\rightarrow$ <code>011</code></p>
+</li>
+<li><p>其它没出现的字符 $\rightarrow$ <code>111</code></p>
+</li>
+</ul>
+</li>
+<li><p>状态转移：初始状态 <code>R = 111</code>。每扫描主串一个字符，执行一次状态转移：</p>
+<p>$$\text{新状态 } R &#x3D; ((R \ll 1) \mid \text{当前字符的掩码})$$</p>
+</li>
+<li><p>结束检查：只要 <code>R</code> 的最高位（第 3 位）变成了 <code>0</code>，就说明 <code>“cat”</code> 三个字母连续匹配成功了。</p>
+</li>
+</ol>
+<h4 id="SAM-多文本串-单模式串"><a href="#SAM-多文本串-单模式串" class="headerlink" title="SAM ( 多文本串 单模式串 )"></a>SAM ( 多文本串 单模式串 )</h4><p>SAM极其困难，并且常数过大，此处不涉及其实现</p>
+<p><strong>后缀自动机</strong>（suffix automaton, SAM）是一个能解决许多字符串相关问题的有力的数据结构．</p>
+<p>举个例子，以下的字符串问题都可以在线性时间内通过 SAM 解决：</p>
+<ul>
+<li>在另一个字符串中搜索一个字符串的所有出现位置；</li>
+<li>计算给定的字符串中有多少个不同的子串．</li>
+</ul>
+<p>直观上，字符串的 SAM 可以理解为给定字符串的 <strong>所有子串</strong> 的压缩形式．值得注意的事实是，SAM 将所有的这些信息以高度压缩的形式储存．对于一个长度为 $n$  的字符串，它的空间复杂度仅为 $O(n)$ ．而且，构造 SAM 的时间复杂度也仅为 $O(n)$ ．准确地说，一个 SAM 最多有 $2n-1$ 个结点和 $3n-4$ 条转移边．</p>
+<h4 id="AC-自动机-多模式串-单文本串"><a href="#AC-自动机-多模式串-单文本串" class="headerlink" title="AC 自动机 ( 多模式串 单文本串 )"></a>AC 自动机 ( 多模式串 单文本串 )</h4><p>此处不适配，略过</p>
+<h4 id="哈希-纯粹的暴力"><a href="#哈希-纯粹的暴力" class="headerlink" title="哈希 ( 纯粹的暴力 )"></a>哈希 ( 纯粹的暴力 )</h4><p>预处理 8 种不同长度的哈希，对于每次查询，从哈希中查找</p>
+<h4 id="横向对比测试结果"><a href="#横向对比测试结果" class="headerlink" title="横向对比测试结果"></a>横向对比测试结果</h4><p>代码在作者代码基础上由 codex-gpt-5.4 编写</p>
+<ul>
+<li>timeout_per_run_seconds: 30</li>
+</ul>
+<h5 id="Wide-Table"><a href="#Wide-Table" class="headerlink" title="Wide Table"></a>Wide Table</h5><table>
+<thead>
+<tr>
+<th>dataset</th>
+<th>baseline</th>
+<th>bitap</th>
+<th>bm</th>
+<th>bmh</th>
+<th>bndm</th>
+<th>contains</th>
+<th>hash</th>
+<th>sam</th>
+<th>sunday</th>
+<th>sunday-kmp</th>
+<th>turbo-bm</th>
+<th>fastest</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>std6.in</td>
+<td>4466.780</td>
+<td>1099.796</td>
+<td>4927.925</td>
+<td>2763.064</td>
+<td>5621.985</td>
+<td>754.712</td>
+<td>3061.585</td>
+<td>timeout</td>
+<td>2016.271</td>
+<td>3980.716</td>
+<td>3256.638</td>
+<td>contains</td>
+</tr>
+<tr>
+<td>std7.txt</td>
+<td>3275.288</td>
+<td>863.640</td>
+<td>3580.136</td>
+<td>1613.718</td>
+<td>3845.947</td>
+<td>648.094</td>
+<td>2687.001</td>
+<td>15643.704</td>
+<td>2976.871</td>
+<td>1310.554</td>
+<td>3526.958</td>
+<td>contains</td>
+</tr>
+<tr>
+<td>random.in</td>
+<td>716.233</td>
+<td>2439.666</td>
+<td>683.621</td>
+<td>2402.003</td>
+<td>719.941</td>
+<td>2464.255</td>
+<td>716.760</td>
+<td>3288.491</td>
+<td>690.992</td>
+<td>2388.654</td>
+<td>687.939</td>
+<td>bm</td>
+</tr>
+<tr>
+<td>00_smoke_compare.in</td>
+<td>2205.142</td>
+<td>462.369</td>
+<td>2197.875</td>
+<td>446.416</td>
+<td>2209.069</td>
+<td>466.454</td>
+<td>2216.436</td>
+<td>485.324</td>
+<td>2190.242</td>
+<td>438.617</td>
+<td>2240.920</td>
+<td>sunday-kmp</td>
+</tr>
+<tr>
+<td>01_short_dense_hits.in</td>
+<td>566.655</td>
+<td>2317.166</td>
+<td>592.016</td>
+<td>2321.408</td>
+<td>558.141</td>
+<td>2335.190</td>
+<td>580.841</td>
+<td>2907.150</td>
+<td>609.195</td>
+<td>2317.841</td>
+<td>585.507</td>
+<td>bndm</td>
+</tr>
+<tr>
+<td>02_long_random_sparse.in</td>
+<td>2387.752</td>
+<td>637.856</td>
+<td>2380.598</td>
+<td>602.271</td>
+<td>2389.099</td>
+<td>604.969</td>
+<td>2403.989</td>
+<td>4878.407</td>
+<td>2338.608</td>
+<td>588.793</td>
+<td>2381.064</td>
+<td>sunday-kmp</td>
+</tr>
+<tr>
+<td>03_periodic_adversarial.in</td>
+<td>663.725</td>
+<td>2427.751</td>
+<td>644.017</td>
+<td>2384.648</td>
+<td>675.036</td>
+<td>2504.290</td>
+<td>603.937</td>
+<td>3073.799</td>
+<td>685.012</td>
+<td>2435.127</td>
+<td>669.552</td>
+<td>hash</td>
+</tr>
+<tr>
+<td>04_many_true_hits_medium.in</td>
+<td>2331.085</td>
+<td>604.668</td>
+<td>2328.235</td>
+<td>591.391</td>
+<td>2359.312</td>
+<td>602.682</td>
+<td>2293.635</td>
+<td>1035.198</td>
+<td>2334.841</td>
+<td>578.432</td>
+<td>2321.854</td>
+<td>sunday-kmp</td>
+</tr>
+<tr>
+<td>05_multi_query_same_text.in</td>
+<td>597.899</td>
+<td>2320.509</td>
+<td>520.830</td>
+<td>2303.679</td>
+<td>612.119</td>
+<td>2326.543</td>
+<td>575.731</td>
+<td>4466.045</td>
+<td>521.453</td>
+<td>2300.557</td>
+<td>539.542</td>
+<td>bm</td>
+</tr>
+<tr>
+<td>06_mixed_compare_suite.in</td>
+<td>2284.175</td>
+<td>540.147</td>
+<td>2295.501</td>
+<td>516.564</td>
+<td>2311.486</td>
+<td>560.478</td>
+<td>2280.104</td>
+<td>848.961</td>
+<td>2273.496</td>
+<td>530.184</td>
+<td>2283.935</td>
+<td>bmh</td>
+</tr>
+</tbody></table>
+<h5 id="Status-Summary"><a href="#Status-Summary" class="headerlink" title="Status Summary"></a>Status Summary</h5><table>
+<thead>
+<tr>
+<th>dataset</th>
+<th align="right">ok</th>
+<th align="right">timeout</th>
+<th align="right">error</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>stdin-2026_unit3_hw10_strong_6.in</td>
+<td align="right">10</td>
+<td align="right">1</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>stdin-2026_unit3_hw10_strong_7.txt</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>clean_spam_focus_random_seed_20260524.in</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>00_smoke_compare.in</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>01_short_dense_hits.in</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>02_long_random_sparse.in</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>03_periodic_adversarial.in</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>04_many_true_hits_medium.in</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>05_multi_query_same_text.in</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>06_mixed_compare_suite.in</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+</tbody></table>
+<h5 id="Win-Count"><a href="#Win-Count" class="headerlink" title="Win Count"></a>Win Count</h5><table>
+<thead>
+<tr>
+<th>project</th>
+<th align="right">wins</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>sunday-kmp</td>
+<td align="right">3</td>
+</tr>
+<tr>
+<td>bm</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>contains</td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td>bmh</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>bndm</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>hash</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>bitap</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>sam</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>sunday</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td>turbo-bm</td>
+<td align="right">0</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/BUAA/" rel="tag"># BUAA</a>
+              <a href="/tags/Course/" rel="tag"># Course</a>
+              <a href="/tags/OO/" rel="tag"># OO</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/undefined.html" rel="prev" title="BUAA Lab4 实验">
+      <i class="fa fa-chevron-left"></i> BUAA Lab4 实验
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BUAA-OO-Unit3-%E5%BF%83%E5%BE%97"><span class="nav-number">1.</span> <span class="nav-text">BUAA OO Unit3 心得</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JML-%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E8%AF%84%E6%B5%8B"><span class="nav-number">1.1.</span> <span class="nav-text">JML 的自动化评测</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%B5%8B%E8%AF%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">动态测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%B5%8B%E8%AF%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">静态测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.3.</span> <span class="nav-text">测试流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.4.</span> <span class="nav-text">一些工具介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AI-%E7%A5%9E%E5%8A%9B"><span class="nav-number">1.1.5.</span> <span class="nav-text">AI 神力</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">字符串匹配算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BD%95%E4%B8%A4%E8%80%85%E7%9A%84%E7%94%A8%E6%97%B6%E5%B7%AE%E4%B8%8D%E5%A4%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">为何两者的用时差不多</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KMP"><span class="nav-number">1.2.2.</span> <span class="nav-text">KMP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BM-%E9%95%BF%E6%96%87%E6%9C%AC%E4%B8%B2-%E9%95%BF%E6%A8%A1%E5%BC%8F%E4%B8%B2-%E9%9A%8F%E6%9C%BA%E5%AD%97%E7%AC%A6"><span class="nav-number">1.2.3.</span> <span class="nav-text">BM (长文本串 长模式串 随机字符)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9D%8F%E5%AD%97%E7%AC%A6%E8%A7%84%E5%88%99"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">坏字符规则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A5%BD%E5%AD%97%E7%AC%A6%E8%A7%84%E5%88%99"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">好字符规则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BM%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8F%98%E4%BD%93"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">BM算法的一些变体</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bitap-%E7%9F%AD%E6%A8%A1%E5%BC%8F%E4%B8%B2-%E5%B0%8F%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">1.2.4.</span> <span class="nav-text">Bitap ( 短模式串 小字符集 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SAM-%E5%A4%9A%E6%96%87%E6%9C%AC%E4%B8%B2-%E5%8D%95%E6%A8%A1%E5%BC%8F%E4%B8%B2"><span class="nav-number">1.2.5.</span> <span class="nav-text">SAM ( 多文本串 单模式串 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AC-%E8%87%AA%E5%8A%A8%E6%9C%BA-%E5%A4%9A%E6%A8%A1%E5%BC%8F%E4%B8%B2-%E5%8D%95%E6%96%87%E6%9C%AC%E4%B8%B2"><span class="nav-number">1.2.6.</span> <span class="nav-text">AC 自动机 ( 多模式串 单文本串 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%88%E5%B8%8C-%E7%BA%AF%E7%B2%B9%E7%9A%84%E6%9A%B4%E5%8A%9B"><span class="nav-number">1.2.7.</span> <span class="nav-text">哈希 ( 纯粹的暴力 )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%AA%E5%90%91%E5%AF%B9%E6%AF%94%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">1.2.8.</span> <span class="nav-text">横向对比测试结果</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Wide-Table"><span class="nav-number">1.2.8.1.</span> <span class="nav-text">Wide Table</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Status-Summary"><span class="nav-number">1.2.8.2.</span> <span class="nav-text">Status Summary</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Win-Count"><span class="nav-number">1.2.8.3.</span> <span class="nav-text">Win Count</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">NonFriedChips</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nonfriedchips" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nonfriedchips" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:non_freid_chips@outlook.com" title="E-Mail → mailto:non_freid_chips@outlook.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">NonFriedChips</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
