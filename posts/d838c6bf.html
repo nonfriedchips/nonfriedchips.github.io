@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="Wiki&#39;s Blog">
 <meta property="og:description" content="BUAA OO Unit3 之 JML 的自动评测方法以及一些字符串匹配算法">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://files.seeusercontent.com/2026/05/30/aZq2/images.jpeg">
+<meta property="og:image" content="https://files.seeusercontent.com/2026/05/30/1sIt/image-20260524000445667.png">
 <meta property="og:image" content="https://files.seeusercontent.com/2026/05/30/1aIj/image-20260524002343204.png">
 <meta property="og:image" content="https://files.seeusercontent.com/2026/05/30/aZq2/images.jpeg">
 <meta property="article:published_time" content="2026-05-23T15:47:10.000Z">
-<meta property="article:modified_time" content="2026-05-30T18:21:45.579Z">
+<meta property="article:modified_time" content="2026-05-30T18:23:47.981Z">
 <meta property="article:author" content="NonFriedChips">
 <meta property="article:tag" content="BUAA">
 <meta property="article:tag" content="Course">
 <meta property="article:tag" content="OO">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://files.seeusercontent.com/2026/05/30/aZq2/images.jpeg">
+<meta name="twitter:image" content="https://files.seeusercontent.com/2026/05/30/1sIt/image-20260524000445667.png">
 
 <link rel="canonical" href="http://blog.kawaiii.wiki/posts/d838c6bf.html">
 
@@ -230,7 +230,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-05-31 02:21:45" itemprop="dateModified" datetime="2026-05-31T02:21:45+08:00">2026-05-31</time>
+                <time title="Modified: 2026-05-31 02:23:47" itemprop="dateModified" datetime="2026-05-31T02:23:47+08:00">2026-05-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -305,7 +305,7 @@
 <h4 id="AI-神力"><a href="#AI-神力" class="headerlink" title="AI 神力"></a>AI 神力</h4><p>我们可以让 AI 来检查</p>
 <h3 id="字符串匹配算法"><a href="#字符串匹配算法" class="headerlink" title="字符串匹配算法"></a>字符串匹配算法</h3><p>在 <code>hw10</code> 中出现了令人啼笑皆非的场景</p>
 <p>由于文本串和模式串都极短，很难区分 KMP 和 Brute Force 两种算法，因此聪明的你想到了猛猛加数据压测来区分这两种算法</p>
-<p>在对代码进行高强度压力测试中，由于服务器已经变成了<br><img src="https://files.seeusercontent.com/2026/05/30/aZq2/images.jpeg" alt="MC Baked Potato"></p>
+<p>在对代码进行高强度压力测试中，由于服务器已经变成了<br><img src="https://files.seeusercontent.com/2026/05/30/1sIt/image-20260524000445667.png" alt="MC Baked Potato"></p>
 <p>于是服务器决定随机通过所有采取 KMP 和 Brute Force 的代码 ( 作者就是不幸被随机判定为不通过的那位 )</p>
 <p>我们来分析一下这个有趣的现象，并从这个现象来理解不同的字符串匹配算法以及他们的优劣之处</p>
 <h4 id="为何两者的用时差不多"><a href="#为何两者的用时差不多" class="headerlink" title="为何两者的用时差不多"></a>为何两者的用时差不多</h4><p>在算法竞赛中，我们通常使用时间复杂度来区分算法性能的优劣，这是因为在算法竞赛的数据规模下，不同时间复杂度算法的用时会有很显然的区分。（而且选手写了访存不友好的算法日不过去就会痛骂出题人卡常）</p>
