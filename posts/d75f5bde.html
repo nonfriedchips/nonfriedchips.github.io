@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"blog.kawaiii.wiki","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="前言因为 bash 实在是太难用，如果有喜欢折腾的同学可以尝试以下，非常非常非常麻烦  先说结论，在跳板机上安装zsh的过程为，在本地准备好 ncureses zsh ohmyzsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions , 使用 sftp 上传至服务器，然后在服务器build">
+  <meta name="description" content="前言 因为 bash 实在是太难用，如果有喜欢折腾的同学可以尝试以下，非常非常非常麻烦  先说结论，在跳板机上安装zsh的过程为，在本地准备好 ncureses zsh ohmyzsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions , 使用 sftp 上传至服务器，然后在服务器build">
 <meta property="og:type" content="article">
 <meta property="og:title" content="北航 os-lab 跳板机配置踩坑记">
 <meta property="og:url" content="http://blog.kawaiii.wiki/posts/d75f5bde.html">
 <meta property="og:site_name" content="Wiki&#39;s Blog">
-<meta property="og:description" content="前言因为 bash 实在是太难用，如果有喜欢折腾的同学可以尝试以下，非常非常非常麻烦  先说结论，在跳板机上安装zsh的过程为，在本地准备好 ncureses zsh ohmyzsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions , 使用 sftp 上传至服务器，然后在服务器build">
+<meta property="og:description" content="前言 因为 bash 实在是太难用，如果有喜欢折腾的同学可以尝试以下，非常非常非常麻烦  先说结论，在跳板机上安装zsh的过程为，在本地准备好 ncureses zsh ohmyzsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions , 使用 sftp 上传至服务器，然后在服务器build">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-05-21T09:38:38.000Z">
 <meta property="article:modified_time" content="2026-05-24T08:24:51.798Z">
@@ -253,64 +253,47 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为 bash 实在是太难用，如果有喜欢折腾的同学可以尝试以下，非常非常非常麻烦</p>
+        <h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
+<p>因为 bash 实在是太难用，如果有喜欢折腾的同学可以尝试以下，非常非常非常麻烦</p>
 <blockquote>
 <p>先说结论，在跳板机上安装zsh的过程为，在本地准备好 ncureses zsh ohmyzsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions , 使用 sftp 上传至服务器，然后在服务器build</p>
 </blockquote>
 <span id="more"></span>
-
-<h2 id="配置教程"><a href="#配置教程" class="headerlink" title="配置教程"></a>配置教程</h2><p>如果你在这个断网的跳板机上尝试装zsh就会发现一万个问题，首先scp服务是关闭的，研究了半天发下可以sftp传上去，传上去之后装zsh又折腾了好久，主要问题是ohmyzsh的离线安装还需要patch install.sh，接下来是安装的细节</p>
+<h2 id="配置教程"><a class="markdownIt-Anchor" href="#配置教程"></a> 配置教程</h2>
+<p>如果你在这个断网的跳板机上尝试装zsh就会发现一万个问题，首先scp服务是关闭的，研究了半天发下可以sftp传上去，传上去之后装zsh又折腾了好久，主要问题是ohmyzsh的离线安装还需要patch <a target="_blank" rel="noopener" href="http://install.sh">install.sh</a>，接下来是安装的细节</p>
 <p>首先是本地的准备</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> zsh-offline-package</span><br><span class="line"><span class="built_in">cd</span> zsh-offline-package</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh.git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/ohmyzsh/ohmyzsh.git</span><br><span class="line">curl -s <span class="variable">$NCURSES_URL</span> | grep -oE <span class="string">&#x27;ncurses-[0-9]+\.[0-9]+\.tar\.gz&#x27;</span> | <span class="built_in">tail</span> -1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions </span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-completions</span><br></pre></td></tr></table></figure>
-
 <p>然后传到服务器上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sftp os-lab</span><br><span class="line"><span class="built_in">cd</span> /<span class="variable">$&#123;你的学号&#125;</span></span><br><span class="line">put -r ../zsh-offline-package</span><br><span class="line"><span class="built_in">bye</span></span><br></pre></td></tr></table></figure>
-
 <p>接下来就是在服务器上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh os-lab</span><br></pre></td></tr></table></figure>
-
-
-
 <p>首先安装 <code>ncureses</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> <span class="built_in">local</span> <span class="built_in">local</span>/ncureses <span class="built_in">local</span>/zsh</span><br><span class="line"><span class="built_in">cp</span> -r /<span class="variable">$&#123;你的学号&#125;</span>/zsh-offline-package/ ~/</span><br><span class="line"><span class="built_in">cd</span> zsh-offline-package</span><br><span class="line">tar -xzvf ncurses-XXX.tar.gz</span><br><span class="line"><span class="built_in">cd</span> ncurses-XXX</span><br><span class="line">./configure --prefix=<span class="variable">$HOME</span>/local/ncurses --with-shared --without-debug --enable-widec  </span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-
 <p>接下来安装 <code>zsh</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/zsh-offline-package/zsh</span><br><span class="line">./configure --prefix=<span class="variable">$HOME</span>/local/zsh</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-
 <p>更改默认的命令行</p>
 <p>将下面写入 <code>~/.bashrc</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CXXFLAGS=<span class="string">&quot;-fPIC&quot;</span></span><br><span class="line"><span class="built_in">export</span> CFLAGS=<span class="string">&quot;-fPIC&quot;</span></span><br><span class="line"><span class="built_in">export</span> NCURSES_HOME=<span class="variable">$HOME</span>/local/ncurses</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$NCURSES_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$NCURSES_HOME</span>/lib:<span class="variable">$LD_LIBRARY_PATH</span></span><br><span class="line"><span class="built_in">export</span> CPPFLAGS=<span class="string">&quot;-I<span class="variable">$NCURSES_HOME</span>/include&quot;</span> LDFLAGS=<span class="string">&quot;-L<span class="variable">$NCURSES_HOME</span>/lib&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$HOME</span>/local/zsh/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-
 <div class="note danger">
-            <p><strong>CAUTION</strong><br>严禁尝试修改默认的命令行，这会使你的 vscode 无法连接<br>忽略下文</p>
+            <p><strong>CAUTION</strong><br />严禁尝试修改默认的命令行，这会使你的 vscode 无法连接<br />忽略下文</p>
           </div>
-
-
-
-<p><del>将下面写入 <code>~/.bash_profile</code></del></p>
+<p><s>将下面写入 <code>~/.bash_profile</code></s></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -f ~/.bashrc ]; <span class="keyword">then</span></span><br><span class="line">    . ~/.bashrc</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -x <span class="string">&quot;/home/git/local/zsh/bin/zsh&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">export</span> SHELL=<span class="string">&quot;/home/git/local/zsh/bin/zsh&quot;</span></span><br><span class="line">    <span class="built_in">exec</span> /home/git/local/zsh/bin/zsh -l</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-
 <p>这样就更改了默认的终端</p>
 <div class="note danger">
-            <p><strong>CAUTION</strong><br>忽略部分到此结束</p>
+            <p><strong>CAUTION</strong><br />忽略部分到此结束</p>
           </div>
-
 <p>然后安装 <code>ohmyzsh</code></p>
 <p>再此之前应当修改 <code>ohmyzsh</code> 的安装脚本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/zsh-offline-package/ohmyzsh</span><br><span class="line">vim ./tools/install.sh</span><br></pre></td></tr></table></figure>
-
 <p>更改</p>
 <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@@ -281,39 +281,8 @@</span> setup_ohmyzsh() &#123;</span><br><span class="line">   # precedence over umasks except for filesystems mounted with option &quot;noacl&quot;.</span><br><span class="line">   umask g-w,o-w</span><br><span class="line"> </span><br><span class="line"><span class="deletion">-  echo &quot;$&#123;FMT_BLUE&#125;Cloning Oh My Zsh...$&#123;FMT_RESET&#125;&quot;</span></span><br><span class="line"><span class="deletion">-</span></span><br><span class="line"><span class="deletion">-  command_exists git || &#123;</span></span><br><span class="line"><span class="deletion">-    fmt_error &quot;git is not installed&quot;</span></span><br><span class="line"><span class="deletion">-    exit 1</span></span><br><span class="line"><span class="deletion">-  &#125;</span></span><br><span class="line"><span class="deletion">-</span></span><br><span class="line"><span class="deletion">-  ostype=$(uname)</span></span><br><span class="line"><span class="deletion">-  if [ -z &quot;$&#123;ostype%CYGWIN*&#125;&quot; ] &amp;&amp; git --version | grep -Eq &#x27;msysgit|windows&#x27;; then</span></span><br><span class="line"><span class="deletion">-    fmt_error &quot;Windows/MSYS Git is not supported on Cygwin&quot;</span></span><br><span class="line"><span class="deletion">-    fmt_error &quot;Make sure the Cygwin git package is installed and is first on the \$PATH&quot;</span></span><br><span class="line"><span class="deletion">-    exit 1</span></span><br><span class="line"><span class="deletion">-  fi</span></span><br><span class="line"><span class="deletion">-</span></span><br><span class="line"><span class="deletion">-  # Manual clone with git config options to support git &lt; v1.7.2</span></span><br><span class="line"><span class="deletion">-  git init --quiet &quot;$ZSH&quot; &amp;&amp; cd &quot;$ZSH&quot; \</span></span><br><span class="line"><span class="deletion">-  &amp;&amp; git config core.eol lf \</span></span><br><span class="line"><span class="deletion">-  &amp;&amp; git config core.autocrlf false \</span></span><br><span class="line"><span class="deletion">-  &amp;&amp; git config fsck.zeroPaddedFilemode ignore \</span></span><br><span class="line"><span class="deletion">-  &amp;&amp; git config fetch.fsck.zeroPaddedFilemode ignore \</span></span><br><span class="line"><span class="deletion">-  &amp;&amp; git config receive.fsck.zeroPaddedFilemode ignore \</span></span><br><span class="line"><span class="deletion">-  &amp;&amp; git config oh-my-zsh.remote origin \</span></span><br><span class="line"><span class="deletion">-  &amp;&amp; git config oh-my-zsh.branch &quot;$BRANCH&quot; \</span></span><br><span class="line"><span class="deletion">-  &amp;&amp; git remote add origin &quot;$REMOTE&quot; \</span></span><br><span class="line"><span class="deletion">-  &amp;&amp; git fetch --depth=1 origin \</span></span><br><span class="line"><span class="deletion">-  &amp;&amp; git checkout -b &quot;$BRANCH&quot; &quot;origin/$BRANCH&quot; || &#123;</span></span><br><span class="line"><span class="deletion">-    [ ! -d &quot;$ZSH&quot; ] || &#123;</span></span><br><span class="line"><span class="deletion">-      cd -</span></span><br><span class="line"><span class="deletion">-      rm -rf &quot;$ZSH&quot; 2&gt;/dev/null</span></span><br><span class="line"><span class="deletion">-    &#125;</span></span><br><span class="line"><span class="deletion">-    fmt_error &quot;git clone of oh-my-zsh repo failed&quot;</span></span><br><span class="line"><span class="deletion">-    exit 1</span></span><br><span class="line"><span class="deletion">-  &#125;</span></span><br><span class="line"><span class="addition">+  cp -ra &quot;$(dirname &quot;$0&quot;)&quot;/.. $ZSH</span></span><br><span class="line"><span class="addition">+  rm -rf $ZSH/.git</span></span><br><span class="line">   # Exit installation directory</span><br><span class="line">   cd -</span><br></pre></td></tr></table></figure>
-
 <p>接下来开始安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$HOME</span>/zsh/local/bin:<span class="variable">$PATH</span></span><br><span class="line">bash ./tools/install.sh</span><br></pre></td></tr></table></figure>
-
 <p>接下来就是安装插件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/zsh-offline-package</span><br><span class="line"><span class="built_in">mv</span> zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh&#125;</span>/plugins</span><br><span class="line"><span class="built_in">mv</span> zsh-completions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh&#125;</span>/plugins</span><br><span class="line"><span class="built_in">mv</span> zsh-syntax-highlighting <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh&#125;</span>/plugins</span><br><span class="line">vim ~/.zshrc</span><br></pre></td></tr></table></figure>
-
 <p>找到 <code>plugins</code> 那一行，把他改成</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=(git <span class="built_in">sudo</span> z zsh-syntax-highlighting zsh-autosuggestions zsh-completions extract)</span><br></pre></td></tr></table></figure>
-
 <p>最终重新连接就完成了</p>
 <p>todo : 一键安装脚本</p>
 <p>鸽了，好麻烦喵</p>
@@ -399,7 +382,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">配置教程</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text"> 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text"> 配置教程</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
