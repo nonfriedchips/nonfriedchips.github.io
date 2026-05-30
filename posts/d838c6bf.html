@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="Wiki&#39;s Blog">
 <meta property="og:description" content="BUAA OO Unit3 之 JML 的自动评测方法以及一些字符串匹配算法">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://blog.kawaiii.wiki/assets/image-20260524000445667.png">
-<meta property="og:image" content="http://blog.kawaiii.wiki/assets/image-20260524002343204.png">
-<meta property="og:image" content="http://blog.kawaiii.wiki/assets/images.jpeg">
+<meta property="og:image" content="https://files.seeusercontent.com/2026/05/30/aZq2/images.jpeg">
+<meta property="og:image" content="https://files.seeusercontent.com/2026/05/30/1aIj/image-20260524002343204.png">
+<meta property="og:image" content="https://files.seeusercontent.com/2026/05/30/aZq2/images.jpeg">
 <meta property="article:published_time" content="2026-05-23T15:47:10.000Z">
-<meta property="article:modified_time" content="2026-05-24T06:25:46.453Z">
+<meta property="article:modified_time" content="2026-05-30T18:21:45.579Z">
 <meta property="article:author" content="NonFriedChips">
 <meta property="article:tag" content="BUAA">
 <meta property="article:tag" content="Course">
 <meta property="article:tag" content="OO">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.kawaiii.wiki/assets/image-20260524000445667.png">
+<meta name="twitter:image" content="https://files.seeusercontent.com/2026/05/30/aZq2/images.jpeg">
 
 <link rel="canonical" href="http://blog.kawaiii.wiki/posts/d838c6bf.html">
 
@@ -230,7 +230,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-05-24 14:25:46" itemprop="dateModified" datetime="2026-05-24T14:25:46+08:00">2026-05-24</time>
+                <time title="Modified: 2026-05-31 02:21:45" itemprop="dateModified" datetime="2026-05-31T02:21:45+08:00">2026-05-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,7 +238,11 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Course-OO/" itemprop="url" rel="index"><span itemprop="name">Course - OO</span></a>
+                  <a href="/categories/Course/" itemprop="url" rel="index"><span itemprop="name">Course</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Course/OO/" itemprop="url" rel="index"><span itemprop="name">OO</span></a>
                 </span>
             </span>
 
@@ -301,7 +305,7 @@
 <h4 id="AI-神力"><a href="#AI-神力" class="headerlink" title="AI 神力"></a>AI 神力</h4><p>我们可以让 AI 来检查</p>
 <h3 id="字符串匹配算法"><a href="#字符串匹配算法" class="headerlink" title="字符串匹配算法"></a>字符串匹配算法</h3><p>在 <code>hw10</code> 中出现了令人啼笑皆非的场景</p>
 <p>由于文本串和模式串都极短，很难区分 KMP 和 Brute Force 两种算法，因此聪明的你想到了猛猛加数据压测来区分这两种算法</p>
-<p>在对代码进行高强度压力测试中，由于服务器已经变成了<br><img src="/./assets/image-20260524000445667.png" alt="MC Baked Potato"></p>
+<p>在对代码进行高强度压力测试中，由于服务器已经变成了<br><img src="https://files.seeusercontent.com/2026/05/30/aZq2/images.jpeg" alt="MC Baked Potato"></p>
 <p>于是服务器决定随机通过所有采取 KMP 和 Brute Force 的代码 ( 作者就是不幸被随机判定为不通过的那位 )</p>
 <p>我们来分析一下这个有趣的现象，并从这个现象来理解不同的字符串匹配算法以及他们的优劣之处</p>
 <h4 id="为何两者的用时差不多"><a href="#为何两者的用时差不多" class="headerlink" title="为何两者的用时差不多"></a>为何两者的用时差不多</h4><p>在算法竞赛中，我们通常使用时间复杂度来区分算法性能的优劣，这是因为在算法竞赛的数据规模下，不同时间复杂度算法的用时会有很显然的区分。（而且选手写了访存不友好的算法日不过去就会痛骂出题人卡常）</p>
@@ -312,7 +316,7 @@
 <hr>
 <p>现在我们令目光回到暴力身上，来看为什么他这么快，实际上 <code>String.contains()</code> 这个函数相当高效</p>
 <p>他在比较的时候使用了 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E5%8D%95%E6%8C%87%E4%BB%A4%E6%B5%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%B5%81">SIMD 技术</a>，CPU一次将复数字节的数据加载到向量寄存器中，一个 CPU 时钟周期内完成整块数据的对比（并且对于这些批量操作的数据，可以更加方便进行多发射。（待验证））（我们后续将介绍一个类似的算法）</p>
-<p><img src="/./assets/image-20260524002343204.png" alt="SIMD 维基百科"></p>
+<p><img src="https://files.seeusercontent.com/2026/05/30/1aIj/image-20260524002343204.png" alt="SIMD 维基百科"></p>
 <p>故而在模式串极短的情况下，CPU只需一个指令就能完成批量的比较</p>
 <p>而 KMP 访存不友好，需要预处理，预测不友好，成为了牢九门（</p>
 <hr>
@@ -327,7 +331,7 @@
 <p>他的核心思想是：从右向左比较，大幅度向后跳跃</p>
 <p>普通的暴力匹配时把模式串在文本串上一步一步往后挪。而 BM 算法在发现不匹配时，能根据已经掌握的信息，一次性向后滑动好几个字符，直接跳过那些绝对不可能匹配成功的区域。</p>
 <p>它之所以能实现大步跳跃，全靠两个核心规则：坏字符规则和好后缀规则。</p>
-<p><img src="/./assets/images.jpeg" alt="坏字符规则"></p>
+<p><img src="https://files.seeusercontent.com/2026/05/30/aZq2/images.jpeg" alt="坏字符规则"></p>
 <h5 id="坏字符规则"><a href="#坏字符规则" class="headerlink" title="坏字符规则"></a>坏字符规则</h5><p>当模式串和文本串从右向左逐个字符比较时，一旦发现某个字符不匹配，主串中这个不匹配的字符就叫做”坏字符“。</p>
 <p>这个时候怎么跳？看图中的逻辑：</p>
 <ol>
@@ -815,7 +819,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
