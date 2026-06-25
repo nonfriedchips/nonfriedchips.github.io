@@ -323,8 +323,8 @@
 <h3 id="字符串匹配算法"><a class="markdownIt-Anchor" href="#字符串匹配算法"></a> 字符串匹配算法</h3>
 <p>在 <code>hw10</code> 中出现了令人啼笑皆非的场景</p>
 <p>由于文本串和模式串都极短，很难区分 KMP 和 Brute Force 两种算法，因此聪明的你想到了猛猛加数据压测来区分这两种算法</p>
-<p>在对代码进行高强度压力测试中，由于服务器已经变成了<br />
-<img src="https://files.seeusercontent.com/2026/05/30/1sIt/image-20260524000445667.png" alt="MC Baked Potato" /></p>
+<p>在对代码进行高强度压力测试中，由于服务器已经变成了<br>
+<img src="https://files.seeusercontent.com/2026/05/30/1sIt/image-20260524000445667.png" alt="MC Baked Potato"></p>
 <p>于是服务器决定随机通过所有采取 KMP 和 Brute Force 的代码 ( 作者就是不幸被随机判定为不通过的那位 )</p>
 <p>我们来分析一下这个有趣的现象，并从这个现象来理解不同的字符串匹配算法以及他们的优劣之处</p>
 <h4 id="为何两者的用时差不多"><a class="markdownIt-Anchor" href="#为何两者的用时差不多"></a> 为何两者的用时差不多</h4>
@@ -333,13 +333,13 @@
 <p>《我引以为傲的哈希算法被写 Trie 树的名门正派说是轮椅，时间还碾了 Trie 树两条街》</p>
 <p>这是因为裸的 Trie 树在当时的场景会对不连续的内存进行大量随机访问，而哈希算法访问内存几乎是连续的。</p>
 <p>现在大家也已经完全了解了，访存性能对于一个程序影响会很大 (这就是为什么我不在这个字符串匹配中写 SAM <s>绝对不是我觉得不好写</s>)</p>
-<hr />
+<hr>
 <p>现在我们令目光回到暴力身上，来看为什么他这么快，实际上 <code>String.contains()</code> 这个函数相当高效</p>
 <p>他在比较的时候使用了 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E5%8D%95%E6%8C%87%E4%BB%A4%E6%B5%81%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%B5%81">SIMD 技术</a>，CPU一次将复数字节的数据加载到向量寄存器中，一个 CPU 时钟周期内完成整块数据的对比（并且对于这些批量操作的数据，可以更加方便进行多发射。（待验证））（我们后续将介绍一个类似的算法）</p>
-<p><img src="https://files.seeusercontent.com/2026/05/30/1aIj/image-20260524002343204.png" alt="SIMD 维基百科" /></p>
+<p><img src="https://files.seeusercontent.com/2026/05/30/1aIj/image-20260524002343204.png" alt="SIMD 维基百科"></p>
 <p>故而在模式串极短的情况下，CPU只需一个指令就能完成批量的比较</p>
 <p>而 KMP 访存不友好，需要预处理，预测不友好，成为了牢九门（</p>
-<hr />
+<hr>
 <p>接下来我们将一次介绍多种字符串匹配算法</p>
 <p>我们先补充基础知识</p>
 <p>在字符串匹配中，需要寻找的字符串叫模式串，即该作业中的 spam 关键字，而待判断的串叫文本串</p>
@@ -353,7 +353,7 @@
 <p>他的核心思想是：从右向左比较，大幅度向后跳跃</p>
 <p>普通的暴力匹配时把模式串在文本串上一步一步往后挪。而 BM 算法在发现不匹配时，能根据已经掌握的信息，一次性向后滑动好几个字符，直接跳过那些绝对不可能匹配成功的区域。</p>
 <p>它之所以能实现大步跳跃，全靠两个核心规则：坏字符规则和好后缀规则。</p>
-<p><img src="https://files.seeusercontent.com/2026/05/30/aZq2/images.jpeg" alt="坏字符规则" /></p>
+<p><img src="https://files.seeusercontent.com/2026/05/30/aZq2/images.jpeg" alt="坏字符规则"></p>
 <h5 id="坏字符规则"><a class="markdownIt-Anchor" href="#坏字符规则"></a> 坏字符规则</h5>
 <p>当模式串和文本串从右向左逐个字符比较时，一旦发现某个字符不匹配，主串中这个不匹配的字符就叫做”坏字符“。</p>
 <p>这个时候怎么跳？看图中的逻辑：</p>
@@ -386,7 +386,7 @@
 <blockquote>
 <p>Btiap算法和你</p>
 <p>文本搜索的实用方法</p>
-<hr />
+<hr>
 <p>无法在规定时间内完成搜索？</p>
 <ul>
 <li>事实：搜索很麻烦</li>
@@ -396,10 +396,10 @@
 <li>她最坏了</li>
 </ul>
 <p>不可能完成的任务？？？</p>
-<hr />
+<hr>
 <p>介绍…Bitap算法！！</p>
 <p>Bitap算法可以让您在短模式串中进行快速匹配！</p>
-<hr />
+<hr>
 <p>操作方法</p>
 <ul>
 <li>将模式串生成为掩码</li>
@@ -408,7 +408,7 @@
 <li>成功了！</li>
 <li>（走你）</li>
 </ul>
-<hr />
+<hr>
 <p>匹配中的麻烦？</p>
 <p>如果字符集过大或模式串过长，那么匹配速度将大打折扣。</p>
 </blockquote>
@@ -773,8 +773,8 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/BUAA/" rel="tag"># BUAA</a>
-              <a href="/tags/Course/" rel="tag"># Course</a>
               <a href="/tags/OO/" rel="tag"># OO</a>
+              <a href="/tags/Course/" rel="tag"># Course</a>
           </div>
 
         
@@ -862,20 +862,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

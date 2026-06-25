@@ -275,13 +275,13 @@
 <p>将下面写入 <code>~/.bashrc</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CXXFLAGS=<span class="string">&quot;-fPIC&quot;</span></span><br><span class="line"><span class="built_in">export</span> CFLAGS=<span class="string">&quot;-fPIC&quot;</span></span><br><span class="line"><span class="built_in">export</span> NCURSES_HOME=<span class="variable">$HOME</span>/local/ncurses</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$NCURSES_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$NCURSES_HOME</span>/lib:<span class="variable">$LD_LIBRARY_PATH</span></span><br><span class="line"><span class="built_in">export</span> CPPFLAGS=<span class="string">&quot;-I<span class="variable">$NCURSES_HOME</span>/include&quot;</span> LDFLAGS=<span class="string">&quot;-L<span class="variable">$NCURSES_HOME</span>/lib&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$HOME</span>/local/zsh/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
 <div class="note danger">
-            <p><strong>CAUTION</strong><br />严禁尝试修改默认的命令行，这会使你的 vscode 无法连接<br />忽略下文</p>
+            <p><strong>CAUTION</strong><br>严禁尝试修改默认的命令行，这会使你的 vscode 无法连接<br>忽略下文</p>
           </div>
 <p><s>将下面写入 <code>~/.bash_profile</code></s></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -f ~/.bashrc ]; <span class="keyword">then</span></span><br><span class="line">    . ~/.bashrc</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -x <span class="string">&quot;/home/git/local/zsh/bin/zsh&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">export</span> SHELL=<span class="string">&quot;/home/git/local/zsh/bin/zsh&quot;</span></span><br><span class="line">    <span class="built_in">exec</span> /home/git/local/zsh/bin/zsh -l</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
 <p>这样就更改了默认的终端</p>
 <div class="note danger">
-            <p><strong>CAUTION</strong><br />忽略部分到此结束</p>
+            <p><strong>CAUTION</strong><br>忽略部分到此结束</p>
           </div>
 <p>然后安装 <code>ohmyzsh</code></p>
 <p>再此之前应当修改 <code>ohmyzsh</code> 的安装脚本</p>
@@ -396,20 +396,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
