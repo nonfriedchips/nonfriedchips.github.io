@@ -119,13 +119,6 @@
 
   
   <url>
-    <loc>http://blog.kawaiii.wiki/tags/%E6%9C%88%E8%AE%B0/</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.kawaiii.wiki/tags/BUAA/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -147,7 +140,7 @@
   </url>
   
   <url>
-    <loc>http://blog.kawaiii.wiki/tags/%E5%86%9B%E7%90%86/</loc>
+    <loc>http://blog.kawaiii.wiki/tags/%E6%9C%88%E8%AE%B0/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -155,6 +148,20 @@
   
   <url>
     <loc>http://blog.kawaiii.wiki/tags/OS/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.kawaiii.wiki/tags/MOS/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.kawaiii.wiki/tags/%E5%86%9B%E7%90%86/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -175,27 +182,6 @@
   </url>
   
   <url>
-    <loc>http://blog.kawaiii.wiki/tags/%E6%97%A5%E5%B8%B8/</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.kawaiii.wiki/tags/%E6%8A%98%E8%85%BE/</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.kawaiii.wiki/tags/MOS/</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.kawaiii.wiki/tags/%E9%AA%8C%E9%A2%98/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -209,14 +195,21 @@
     <priority>0.2</priority>
   </url>
   
-
-  
   <url>
-    <loc>http://blog.kawaiii.wiki/categories/%E6%9C%88%E8%AE%B0/</loc>
+    <loc>http://blog.kawaiii.wiki/tags/%E6%97%A5%E5%B8%B8/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
+  
+  <url>
+    <loc>http://blog.kawaiii.wiki/tags/%E6%8A%98%E8%85%BE/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
   
   <url>
     <loc>http://blog.kawaiii.wiki/categories/Course/</loc>
@@ -226,21 +219,7 @@
   </url>
   
   <url>
-    <loc>http://blog.kawaiii.wiki/categories/%E9%80%86%E5%90%91/</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.kawaiii.wiki/categories/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2026-06-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.kawaiii.wiki/categories/Course/OO/</loc>
+    <loc>http://blog.kawaiii.wiki/categories/%E6%9C%88%E8%AE%B0/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -254,7 +233,7 @@
   </url>
   
   <url>
-    <loc>http://blog.kawaiii.wiki/categories/XCPC/</loc>
+    <loc>http://blog.kawaiii.wiki/categories/Course/OO/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -262,6 +241,27 @@
   
   <url>
     <loc>http://blog.kawaiii.wiki/categories/Course/%E5%86%9B%E7%90%86/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.kawaiii.wiki/categories/%E9%80%86%E5%90%91/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.kawaiii.wiki/categories/XCPC/</loc>
+    <lastmod>2026-06-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.kawaiii.wiki/categories/%E7%94%9F%E6%B4%BB/</loc>
     <lastmod>2026-06-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
